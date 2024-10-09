@@ -2,423 +2,433 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Enhanced Apple-Inspired Site</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Apple-Inspired Site with Sliding Menu</title>
+    <!-- Include FontAwesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         /* General Styles */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f7;
             color: #1d1d1f;
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            background-color: #f5f5f7;
         }
 
+        /* Navbar */
         header {
-            background-color: #000;
-            color: white;
-            padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
+            background: rgba(0, 0, 0, 0.8);
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s;
+        }
+
+        header.scrolled {
+            background: #000;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
-            padding: 0 30px;
+            align-items: center;
+            padding: 20px 40px;
         }
 
-        nav a {
-            color: white;
+        nav .logo {
+            font-size: 24px;
+            color: #fff;
             text-decoration: none;
-            font-weight: 500;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
             font-size: 18px;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
+            padding: 5px 0;
+            transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #a1a1a6;
-        }
-
-        #menu-button {
-            cursor: pointer;
-            font-size: 30px;
-            color: white;
-            transition: color 0.3s ease;
-        }
-
-        /* Sliding Side Menu */
-        #side-menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1001;
-            top: 0;
-            left: 0;
-            background-color: #000;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        #side-menu a {
-            padding: 10px 30px;
-            text-decoration: none;
-            font-size: 20px;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        #side-menu a:hover {
-            background-color: #555;
-        }
-
-        #close-menu {
+        nav ul li a::after {
+            content: '';
             position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 36px;
+            width: 0%;
+            height: 2px;
+            background: #fff;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #aaa;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
         }
 
         /* Hero Section */
-        section {
-            padding: 100px 20px;
-        }
-
         .hero {
-            background-color: #fff;
-            padding: 200px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            color: #fff;
             text-align: center;
-            background-image: url('https://via.placeholder.com/1500x600'); /* Replace with Apple-inspired image */
+            background-image: url('https://via.placeholder.com/1500x1000'); /* Replace with your image */
             background-size: cover;
             background-position: center;
-            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 2s ease-in-out;
         }
 
         .hero h1 {
-            font-size: 60px;
+            font-size: 64px;
             margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
         }
 
         .hero p {
-            font-size: 26px;
-            color: #ddd;
+            font-size: 24px;
             margin-bottom: 40px;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
         }
 
         .hero a {
-            padding: 15px 40px;
-            background-color: #0071e3;
-            color: white;
+            display: inline-block;
+            padding: 15px 30px;
+            background: #0071e3;
+            color: #fff;
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 10px;
             font-size: 18px;
-            transition: background-color 0.3s ease;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease 0.6s, transform 1s ease 0.6s;
+            transition: background 0.3s, transform 0.3s;
         }
 
         .hero a:hover {
-            background-color: #005bb5;
+            background: #005bb5;
+            transform: translateY(-5px);
         }
 
-        /* Product Section */
-        .product-section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        /* Keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Products Section */
+        .products {
+            padding: 100px 20px;
+            background: #f5f5f7;
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 60px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
         }
 
-        .product {
-            text-align: center;
-            flex: 1 1 300px;
-            max-width: 350px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: transform 0.5s ease, opacity 0.5s ease;
+        .product-item {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: scale(1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .product img {
+        .product-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
             width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
         }
 
-        .product h2 {
-            font-size: 28px;
+        .product-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-content h3 {
+            font-size: 24px;
             margin-bottom: 10px;
         }
 
-        .product p {
-            font-size: 18px;
+        .product-content p {
+            font-size: 16px;
             color: #6e6e73;
+            margin-bottom: 20px;
         }
 
-        .product:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        .product-content a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0071e3;
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .product-content a:hover {
+            background: #005bb5;
         }
 
         /* Features Section */
         .features {
-            background-color: #f5f5f7;
             padding: 100px 20px;
         }
 
         .features h2 {
             text-align: center;
             font-size: 40px;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
-        .feature-list {
-            display: flex;
-            justify-content: space-around;
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-item {
             text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f0f0, #fafafa);
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 1s forwards;
         }
 
-        .feature {
-            flex: 1;
-            margin: 20px;
+        .feature-item:nth-child(odd) {
+            animation-delay: 0.3s;
         }
 
-        .feature i {
-            font-size: 60px;
-            margin-bottom: 20px;
+        .feature-item:nth-child(even) {
+            animation-delay: 0.6s;
+        }
+
+        .feature-item i {
+            font-size: 50px;
             color: #0071e3;
-            transition: transform 0.3s ease;
+            margin-bottom: 20px;
         }
 
-        .feature:hover i {
-            transform: scale(1.2);
-        }
-
-        .feature h3 {
+        .feature-item h3 {
             font-size: 24px;
             margin-bottom: 10px;
         }
 
-        .feature p {
+        .feature-item p {
+            font-size: 16px;
             color: #6e6e73;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Footer */
         footer {
-            background-color: #000;
-            color: white;
-            text-align: center;
+            background: #000;
+            color: #fff;
             padding: 40px 20px;
-            margin-top: 50px;
-            font-size: 14px;
-        }
-
-        footer a {
-            color: #0071e3;
-            text-decoration: none;
-        }
-
-        /* Scroll Animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Back to Top Button */
-        #back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #0071e3;
-            color: white;
-            padding: 15px;
-            border-radius: 50%;
             text-align: center;
-            font-size: 18px;
-            cursor: pointer;
-            display: none;
         }
 
-        #back-to-top:hover {
-            background-color: #005bb5;
+        footer p {
+            margin: 0;
+            font-size: 14px;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
             .hero h1 {
-                font-size: 40px;
+                font-size: 48px;
             }
 
             .hero p {
                 font-size: 20px;
             }
-
-            .hero a {
-                font-size: 16px;
-            }
-
-            .product-section {
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .feature-list {
-                flex-direction: column;
-            }
         }
+
+        /* Active Mobile Menu */
+        nav ul.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            right: 0;
+            background: #000;
+            width: 200px;
+            padding: 20px;
+        }
+
+        nav ul.active li {
+            margin-bottom: 20px;
+        }
+
     </style>
 </head>
 <body>
 
-<!-- Header -->
-<header>
-    <nav>
-        <span id="menu-button">&#9776;</span>
-        <div>
-            <a href="#home">Home</a>
-            <a href="#products">Products</a>
-            <a href="#features">Features</a>
-            <a href="#about">About</a>
+    <!-- Navbar -->
+    <header id="navbar">
+        <nav>
+            <a href="#" class="logo">YourLogo</a>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Experience Innovation</h1>
+            <p>Where technology meets creativity.</p>
+            <a href="#products">Explore Now</a>
         </div>
-    </nav>
-</header>
+    </section>
 
-<!-- Side Sliding Menu -->
-<div id="side-menu">
-    <a href="javascript:void(0)" id="close-menu">&times;</a>
-    <a href="#home">Home</a>
-    <a href="#products">Products</a>
-    <a href="#features">Features</a>
-    <a href="#about">About</a>
-</div>
-
-<!-- Hero Section -->
-<section class="hero" id="home">
-    <h1>Experience the Future of Technology</h1>
-    <p>Innovative design, powerful performance, and seamless integration.</p>
-    <a href="#products">Explore Our Products</a>
-</section>
-
-<!-- Product Section -->
-<section class="product-section" id="products">
-    <div class="product animate-on-scroll">
-        <img src="https://via.placeholder.com/300" alt="Product 1">
-        <h2>Product One</h2>
-        <p>Experience unparalleled performance with Product One.</p>
-    </div>
-    <div class="product animate-on-scroll">
-        <img src="https://via.placeholder.com/300" alt="Product 2">
-        <h2>Product Two</h2>
-        <p>Seamless integration and cutting-edge technology.</p>
-    </div>
-    <div class="product animate-on-scroll">
-        <img src="https://via.placeholder.com/300" alt="Product 3">
-        <h2>Product Three</h2>
-        <p>Security and power in your hands with Product Three.</p>
-    </div>
-</section>
-
-<!-- Features Section -->
-<section class="features" id="features">
-    <h2>Our Features</h2>
-    <div class="feature-list">
-        <div class="feature animate-on-scroll">
-            <i class="fas fa-microchip"></i>
-            <h3>Unmatched Performance</h3>
-            <p>Top-tier processors for incredible speed and efficiency.</p>
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+            <div class="product-item">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                <div class="product-content">
+                    <h3>Product One</h3>
+                    <p>Description of Product One.</p>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                <div class="product-content">
+                    <h3>Product Two</h3>
+                    <p>Description of Product Two.</p>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+            <!-- Add more product items as needed -->
         </div>
-        <div class="feature animate-on-scroll">
-            <i class="fas fa-mobile-alt"></i>
-            <h3>Seamless Integration</h3>
-            <p>Your devices work together like never before.</p>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Why Choose Us</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <i class="fas fa-rocket"></i>
+                <h3>Fast Performance</h3>
+                <p>Experience lightning-fast speeds.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Top Security</h3>
+                <p>Protect your data with our advanced security features.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-sync-alt"></i>
+                <h3>Seamless Integration</h3>
+                <p>All your devices working in perfect harmony.</p>
+            </div>
         </div>
-        <div class="feature animate-on-scroll">
-            <i class="fas fa-shield-alt"></i>
-            <h3>Security</h3>
-            <p>Keep your data safe with industry-leading protection.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer>
-    <p>&copy; 2024 Apple-Inspired Store | Designed by Elliot</p>
-</footer>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
 
-<!-- Back to Top Button -->
-<div id="back-to-top">&#x25B2;</div>
-
-<script>
-    // Scroll Animations
-    const animateOnScroll = document.querySelectorAll('.animate-on-scroll');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+    <!-- JavaScript -->
+    <script>
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navbar');
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
-    });
 
-    animateOnScroll.forEach(element => {
-        observer.observe(element);
-    });
-
-    // Back to Top Button
-    const backToTopButton = document.getElementById('back-to-top');
-
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopButton.style.display = 'block';
-        } else {
-            backToTopButton.style.display = 'none';
+        // Mobile menu toggle
+        function toggleMenu() {
+            const nav = document.querySelector('nav ul');
+            nav.classList.toggle('active');
         }
-    });
-
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // Sliding Menu
-    const menuButton = document.getElementById('menu-button');
-    const sideMenu = document.getElementById('side-menu');
-    const closeMenu = document.getElementById('close-menu');
-
-    menuButton.addEventListener('click', () => {
-        sideMenu.style.width = '250px';
-    });
-
-    closeMenu.addEventListener('click', () => {
-        sideMenu.style.width = '0';
-    });
-</script>
+    </script>
 
 </body>
 </html>
