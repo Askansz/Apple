@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Apple-Inspired Site</title>
+    <title>Advanced Apple-Inspired Site with Sliding Menu</title>
     <style>
         /* General Styles */
         body {
@@ -28,8 +28,8 @@
 
         nav {
             display: flex;
-            justify-content: center;
-            gap: 40px;
+            justify-content: space-between;
+            padding: 0 30px;
         }
 
         nav a {
@@ -45,6 +45,48 @@
             color: #a1a1a6;
         }
 
+        #menu-button {
+            cursor: pointer;
+            font-size: 30px;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        /* Sliding Side Menu */
+        #side-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            background-color: #000;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        #side-menu a {
+            padding: 10px 30px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        #side-menu a:hover {
+            background-color: #555;
+        }
+
+        #close-menu {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 36px;
+        }
+
+        /* Hero Section */
         section {
             padding: 100px 20px;
         }
@@ -252,68 +294,86 @@
 </head>
 <body>
 
+<!-- Header -->
 <header>
     <nav>
-        <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#features">Features</a>
-        <a href="#about">About</a>
+        <span id="menu-button">&#9776;</span>
+        <div>
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+        </div>
     </nav>
 </header>
 
+<!-- Side Sliding Menu -->
+<div id="side-menu">
+    <a href="javascript:void(0)" id="close-menu">&times;</a>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#features">Features</a>
+    <a href="#about">About</a>
+</div>
+
+<!-- Hero Section -->
 <section class="hero" id="home">
     <h1>Experience the Future of Technology</h1>
     <p>Innovative design, powerful performance, and seamless integration.</p>
     <a href="#products">Explore Our Products</a>
 </section>
 
+<!-- Product Section -->
 <section class="product-section" id="products">
     <div class="product animate-on-scroll">
-        <img src="https://via.placeholder.com/400x300" alt="MacBook Air">
-        <h2>MacBook Air</h2>
-        <p>Light. Speed. Performance.</p>
+        <img src="https://via.placeholder.com/300" alt="Product 1">
+        <h2>Product One</h2>
+        <p>Experience unparalleled performance with Product One.</p>
     </div>
     <div class="product animate-on-scroll">
-        <img src="https://via.placeholder.com/400x300" alt="iPhone 14">
-        <h2>iPhone 14</h2>
-        <p>Life at full speed.</p>
+        <img src="https://via.placeholder.com/300" alt="Product 2">
+        <h2>Product Two</h2>
+        <p>Seamless integration and cutting-edge technology.</p>
     </div>
     <div class="product animate-on-scroll">
-        <img src="https://via.placeholder.com/400x300" alt="Apple Watch">
-        <h2>Apple Watch</h2>
-        <p>Monitor your health. Track your progress.</p>
+        <img src="https://via.placeholder.com/300" alt="Product 3">
+        <h2>Product Three</h2>
+        <p>Security and power in your hands with Product Three.</p>
     </div>
 </section>
 
+<!-- Features Section -->
 <section class="features" id="features">
-    <h2>Why Choose Us?</h2>
+    <h2>Our Features</h2>
     <div class="feature-list">
         <div class="feature animate-on-scroll">
-            <i class="fas fa-laptop"></i>
-            <h3>Powerful Devices</h3>
-            <p>Unparalleled performance and design that stands out.</p>
+            <i class="fas fa-microchip"></i>
+            <h3>Unmatched Performance</h3>
+            <p>Top-tier processors for incredible speed and efficiency.</p>
         </div>
         <div class="feature animate-on-scroll">
             <i class="fas fa-mobile-alt"></i>
             <h3>Seamless Integration</h3>
-            <p>All your devices work together in perfect harmony.</p>
+            <p>Your devices work together like never before.</p>
         </div>
         <div class="feature animate-on-scroll">
             <i class="fas fa-shield-alt"></i>
             <h3>Security</h3>
-            <p>Stay secure with our industry-leading protection.</p>
+            <p>Keep your data safe with industry-leading protection.</p>
         </div>
     </div>
 </section>
 
+<!-- Footer -->
 <footer>
     <p>&copy; 2024 Apple-Inspired Store | Designed by Elliot</p>
 </footer>
 
+<!-- Back to Top Button -->
 <div id="back-to-top">&#x25B2;</div>
 
 <script>
-    // Scroll Animation
+    // Scroll Animations
     const animateOnScroll = document.querySelectorAll('.animate-on-scroll');
 
     const observer = new IntersectionObserver((entries) => {
@@ -344,6 +404,19 @@
             top: 0,
             behavior: 'smooth'
         });
+    });
+
+    // Sliding Menu
+    const menuButton = document.getElementById('menu-button');
+    const sideMenu = document.getElementById('side-menu');
+    const closeMenu = document.getElementById('close-menu');
+
+    menuButton.addEventListener('click', () => {
+        sideMenu.style.width = '250px';
+    });
+
+    closeMenu.addEventListener('click', () => {
+        sideMenu.style.width = '0';
     });
 </script>
 
