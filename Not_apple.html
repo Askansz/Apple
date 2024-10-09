@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Apple-Inspired Site</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
 
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background-color: #f4f4f4;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: #666;
+        }
+
+        .product-section {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 50px 20px;
+        }
+
+        .product {
+            text-align: center;
+        }
+
+        .product img {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .product h2 {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="#">Mac</a>
+        <a href="#">iPhone</a>
+        <a href="#">iPad</a>
+        <a href="#">Watch</a>
+        <a href="#">Support</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Experience the Next Generation of Devices</h1>
+    <p>Beautifully designed. Perfectly engineered.</p>
+</section>
+
+<section class="product-section">
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="MacBook Pro">
+        <h2>MacBook Pro</h2>
+        <p>Power. Performance. Perfection.</p>
+    </div>
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="iPhone 13">
+        <h2>iPhone 13</h2>
+        <p>The best iPhone yet.</p>
+    </div>
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Apple Watch">
+        <h2>Apple Watch</h2>
+        <p>Your health at a glance.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Apple Inc. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
