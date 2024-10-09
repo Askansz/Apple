@@ -1,0 +1,243 @@
+.no-supports-ar .ar-kit-link,
+.supports-ar .ar-kit-copy {
+    display: none;
+}
+
+.as-footnotes .as-footnotes-sosumi sup:lang(zh-CN) {
+    font-family: SF Pro SC,SF Pro Text,Myriad Set Pro,SF Pro Icons,PingFang SC,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.cn .colornav-logo-productred {
+    display: none;
+}
+
+.rf-productlocator-filter-dimension input[name="pl_dimensionCapacity"]~.form-selector-label {
+    padding: 15px 12px;
+}
+
+.rf-productlocator-filter-dimension input[name="pl_dimensionCapacity"]:checked~.form-selector-label {
+    padding: 14px 11px;
+}
+
+.rf-bfe-summary-price-box .rf-ac-messages a {
+    display: inline-block;
+}
+
+@media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+    .rf-bfe-summary-price-box .as-price-currentprice .as-price-highlight,
+    .rf-bfe-summary-price-box .rc-prices-currentprice .as-price-highlight {
+        padding-top: 0;
+    }   
+}
+
+.rf-po-bfe-financingoption-description + .rf-po-bfe-financingoption-subsectionheader {
+      padding-top: 10px;
+}
+
+.rf-bfe-summary .as-price-currentprice .as-price-savingspromotion-block {
+    display: none;
+}
+
+/**
+rdar://112111816 (23.7: JP IRO: Config OFF: Extra trade in content showing up in summary for PIF + Trade in flow)
+Aspen is working on a permanent fix for this issue.
+*/
+.jp .rf-bfe-summary-price-box .rf-bfe-summary-financing-message {
+    display: none;
+}
+
+/**
+ * rdar://114595259 (GR: Notify ME: Text under the CTA button for CF GR OFF and Notify ME On/ OFF is not center aligned with the button frame)
+ */
+.rf-bfe-summary-wrapper .rf-bfe-summary-carrierfinancedisclaimer,
+ .rf-bfe-summary-fulfillment-fullWidth .rf-bfe-summary-carrierfinancedisclaimer {
+    text-align: center;
+    padding: 0 30px;
+    margin-top: 10px;
+}
+
+.rf-po-bfe-purchaseoptionsedit-option-container {
+    overflow: visible;
+}
+
+.rf-notifyme-overlay .rf-notifyme-overlay-wrapper {
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+}
+
+.rf-notifyme-overlay .rf-notifyme-subheader {
+    margin: 14px 55px;
+}
+
+.rf-notifyme-overlay .rf-notifyme-form {
+    padding: 65px 88px 48px;
+    text-align: start;
+}
+
+.rf-notifyme-overlay .rf-notifyme-disclaimer {
+    text-align: center;
+    padding: 0 88px;
+}
+
+.rf-notifyme-overlay .rf-notifyme-formbutton {
+    margin-top: 30px;
+    margin-inline: 0;
+    margin-bottom: 0;
+    padding: 11px;
+}
+
+.rf-notifyme-overlay .rf-notifyme-success-image .icon-checksolid::after {
+    padding: 0;
+}
+
+.rf-notifyme-overlay .rf-notifyme-success-description {
+    margin-top: 30px;
+    margin-inline: 70px;
+    margin-bottom: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.rf-notifyme-overlay .rs-notifyme-success-button {
+    max-width: 496px;
+    margin-top: 80px;
+    margin-inline: auto;
+    margin-bottom: 0;
+    padding: 11px;
+}
+
+@media only screen and (max-width: 1023px) and (max-device-width: 736px) {
+    .rf-notifyme-overlay .rf-notifyme-subheader {
+        margin: 14px 0;
+        text-align: center;
+    }
+
+    .rf-notifyme-overlay .rf-notifyme-form {
+        padding: 65px 0 48px;
+        text-align: start;
+    }
+
+    .rf-notifyme-overlay .rf-notifyme-disclaimer {
+        text-align: center;
+        padding: 0;
+    }
+
+    .rf-notifyme-overlay .rf-notifyme-success-description {
+        margin-top: 30px;
+        margin-inline: 0;
+        margin-bottom: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .rf-notifyme-overlay .rs-notifyme-success-button {
+        width: 100%;
+        margin-top: 80px;
+        margin-inline: 0;
+        margin-bottom: 0;
+        padding: 11px;
+    }
+
+    .rf-bfe-header {
+        max-width: none;
+    }
+}
+
+.rf-bfe-header .violator-frameless+h1 {
+    max-width: none;
+}
+
+/**
+ * rdar://118358189 (JP IRO Stage: Warm State - After Trade-in, After selecting payment)
+ * Adding this fix to temporarily display the contents of the span with class 'as-price-highlight'
+ */
+ .jp .rf-bfe-header-price .rc-prices-currentprice .rc-prices-fullprice .as-price-highlight {
+    display: inline-block;
+}
+
+/**
+ * rdar://132383572 Adding key line for ACMI carrier connectivity tile
+ */
+ .rf-po-bfe-financingoptions-tabs-content .rf-po-bfe-financingoption .rf-po-bfe-financingoption-subsection-list,
+ .rf-po-bfe-purchasegroupoption-full-width .rf-po-bfe-purchasegroupoption-subsection-list {
+    border-top: 1px solid rgb(134, 134, 139);
+    margin-top: 15px;
+    padding-top: 15px;
+    margin-inline: 0px;
+}
+
+.rf-po-bfe-financingoptions-tabs-content .rf-po-bfe-financingoption .rf-po-bfe-financingoption-subsection-listitem,
+.rf-po-bfe-purchasegroupoption-full-width .rf-po-bfe-purchasegroupoption-subsection-listitem {
+    margin-inline: 12px 0px;
+}
+
+.rf-po-bfe-financingoptions-tabs-content .rf-po-bfe-financingoption .rf-po-bfe-dimension-base-detail {
+    margin: 7px 0 0;
+}
+
+.rf-bfe-selector-subtext.form-label-small {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.rf-bfe-selector-subtext.form-label-small img {
+    padding-right: 6px;
+}
+
+.rf-bfe-header .badge+h1 {
+    max-width: none;
+}
+
+.rc-carrierpromotion-wrapper .tabnav .tabnav-item {
+    padding-inline-start: 20px;
+}
+
+.rc-carrierpromotion-wrapper .tabnav .rc-carrierpromotion-logo {
+    width: 126px;
+}
+
+@media only screen and (max-device-width: 736px) and (max-width: 1023px) {
+    .rc-carrierpromotion-wrapper .tabnav {
+        height: auto;
+        padding-bottom: 5px;
+    }
+
+    .rc-carrierpromotion-wrapper .tabnav ul.tabnav-items {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px 20px;
+    }
+
+    .rc-carrierpromotion-wrapper .tabnav .tabnav-item {
+        padding-inline: 0;
+    }
+
+    .rc-carrierpromotion-wrapper .tabnav .tabnav-item .tabnav-link {
+        margin: 0;
+    }
+
+    .rc-carrierpromotion-wrapper .tabnav .tabnav-item .tabnav-link:after {
+        border-bottom: none;
+    }
+
+    .rc-carrierpromotion-wrapper .rc-carrierpromotion-header {
+        text-align: center;
+    }    
+
+    .rc-carrierpromotion-wrapper .rc-carrierpromotion-offertext,
+    .rc-carrierpromotion-wrapper .rc-carrierpromotion-subheader {
+        padding-inline: 23px;
+        text-align: center;
+    }
+
+    .rc-carrierpromotion-wrapper .rc-carrierpromotion-sf-sectionheader {
+        padding-inline: 23px;
+    }
+
+    .rc-carrierpromotion-singlepromotion .rc-carrierpromotion-plancolumn {
+        border-top: none;
+    }
+}
