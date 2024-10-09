@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple-Inspired Landing Page</title>
+    <title>Advanced Apple-Inspired Site</title>
     <style>
         /* General Styles */
         body {
@@ -12,22 +12,24 @@
             padding: 0;
             background-color: #f5f5f7;
             color: #1d1d1f;
+            scroll-behavior: smooth;
         }
 
         header {
             background-color: #000;
             color: white;
             padding: 20px 0;
-            position: sticky;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         nav {
             display: flex;
             justify-content: center;
             gap: 40px;
-            padding: 10px 0;
         }
 
         nav a {
@@ -43,10 +45,13 @@
             color: #a1a1a6;
         }
 
-        /* Hero Section */
+        section {
+            padding: 100px 20px;
+        }
+
         .hero {
             background-color: #fff;
-            padding: 120px 20px;
+            padding: 200px 20px;
             text-align: center;
             background-image: url('https://via.placeholder.com/1500x600'); /* Replace with Apple-inspired image */
             background-size: cover;
@@ -57,12 +62,18 @@
         .hero h1 {
             font-size: 60px;
             margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
         .hero p {
             font-size: 26px;
             color: #ddd;
             margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
         }
 
         .hero a {
@@ -73,6 +84,9 @@
             border-radius: 10px;
             font-size: 18px;
             transition: background-color 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease 0.6s, transform 1s ease 0.6s;
         }
 
         .hero a:hover {
@@ -81,22 +95,24 @@
 
         /* Product Section */
         .product-section {
-            padding: 80px 20px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 60px;
+            gap: 40px;
         }
 
         .product {
             text-align: center;
             flex: 1 1 300px;
-            max-width: 400px;
+            max-width: 350px;
             padding: 20px;
             background-color: #fff;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: transform 0.5s ease, opacity 0.5s ease;
         }
 
         .product img {
@@ -116,8 +132,51 @@
         }
 
         .product:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.05);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Features Section */
+        .features {
+            background-color: #f5f5f7;
+            padding: 100px 20px;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 50px;
+        }
+
+        .feature-list {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .feature {
+            flex: 1;
+            margin: 20px;
+        }
+
+        .feature i {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #0071e3;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover i {
+            transform: scale(1.2);
+        }
+
+        .feature h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #6e6e73;
         }
 
         /* Footer */
@@ -133,6 +192,37 @@
         footer a {
             color: #0071e3;
             text-decoration: none;
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #0071e3;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #back-to-top:hover {
+            background-color: #005bb5;
         }
 
         /* Responsive Design */
@@ -154,8 +244,8 @@
                 gap: 40px;
             }
 
-            .product {
-                max-width: 100%;
+            .feature-list {
+                flex-direction: column;
             }
         }
     </style>
@@ -164,42 +254,98 @@
 
 <header>
     <nav>
-        <a href="#">Mac</a>
-        <a href="#">iPhone</a>
-        <a href="#">iPad</a>
-        <a href="#">Watch</a>
-        <a href="#">TV</a>
-        <a href="#">Support</a>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
     </nav>
 </header>
 
-<section class="hero">
-    <h1>Explore the Future of Technology</h1>
+<section class="hero" id="home">
+    <h1>Experience the Future of Technology</h1>
     <p>Innovative design, powerful performance, and seamless integration.</p>
-    <a href="#">Discover More</a>
+    <a href="#products">Explore Our Products</a>
 </section>
 
-<section class="product-section">
-    <div class="product">
+<section class="product-section" id="products">
+    <div class="product animate-on-scroll">
         <img src="https://via.placeholder.com/400x300" alt="MacBook Air">
         <h2>MacBook Air</h2>
         <p>Light. Speed. Performance.</p>
     </div>
-    <div class="product">
+    <div class="product animate-on-scroll">
         <img src="https://via.placeholder.com/400x300" alt="iPhone 14">
         <h2>iPhone 14</h2>
         <p>Life at full speed.</p>
     </div>
-    <div class="product">
-        <img src="https://via.placeholder.com/400x300" alt="Apple Watch Series 8">
+    <div class="product animate-on-scroll">
+        <img src="https://via.placeholder.com/400x300" alt="Apple Watch">
         <h2>Apple Watch</h2>
         <p>Monitor your health. Track your progress.</p>
     </div>
 </section>
 
+<section class="features" id="features">
+    <h2>Why Choose Us?</h2>
+    <div class="feature-list">
+        <div class="feature animate-on-scroll">
+            <i class="fas fa-laptop"></i>
+            <h3>Powerful Devices</h3>
+            <p>Unparalleled performance and design that stands out.</p>
+        </div>
+        <div class="feature animate-on-scroll">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Seamless Integration</h3>
+            <p>All your devices work together in perfect harmony.</p>
+        </div>
+        <div class="feature animate-on-scroll">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Security</h3>
+            <p>Stay secure with our industry-leading protection.</p>
+        </div>
+    </div>
+</section>
+
 <footer>
-    <p>&copy; 2024 Apple Inc. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    <p>&copy; 2024 Apple-Inspired Store | Designed by Elliot</p>
 </footer>
+
+<div id="back-to-top">&#x25B2;</div>
+
+<script>
+    // Scroll Animation
+    const animateOnScroll = document.querySelectorAll('.animate-on-scroll');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    });
+
+    animateOnScroll.forEach(element => {
+        observer.observe(element);
+    });
+
+    // Back to Top Button
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
 
 </body>
 </html>
