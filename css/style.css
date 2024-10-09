@@ -1,0 +1,42 @@
+/*------------------------------------*\ 
+   LOCAL SCREENS 
+\*------------------------------------*/ 
+ 
+ 
+ 
+ 
+ 
+ /*------------------------------------*\ 
+   END LOCAL SCREENS 
+\*------------------------------------*/ 
+ 
+ 
+ 
+ 
+ 
+ /*------------------------------------*\ 
+   LOCAL FIXES 
+\*------------------------------------*/ 
+
+body.globalheader-light #globalnav {
+	--globalnav-background: #fafafccc
+}
+ 
+ body.globalheader-dark .main [data-module-template="ribbon"] [data-unit-id="back-to-school"].background-white {
+	 background-color: #1d1d1f;
+	 color: #f5f5f7
+ }
+ 
+ body.globalheader-dark .main [data-module-template="ribbon"] [data-unit-id="back-to-school"].background-white sup a{
+	color: #f5f5f7
+ }
+ 
+ body.globalheader-dark .main [data-module-template="ribbon"] [data-unit-id="back-to-school"].background-white .bts-ribbon-copy [data-analytics-title="shop now - back to school 2024"] {
+	color: #2997ff
+ }
+ 
+ 
+ 
+ /*------------------------------------*\ 
+   END LOCAL FIXES 
+\*------------------------------------*/

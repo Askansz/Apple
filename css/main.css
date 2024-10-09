@@ -1,0 +1,117 @@
+/*------------------------------------*\
+  MLS DEFAULT & EPP LAYOUT CSS
+\*------------------------------------*/
+
+/* DEFAULT LAYOUT */
+
+[data-layout-name$="mls"] .main [data-module-template="heroes"] [data-unit-id="macbook-air-m3"] {
+    display: none;
+}
+
+[data-layout-name$="mls"] .main [data-module-template="promos"] [data-unit-id="homepod-mini"] {
+    display: none;
+}
+
+/* EPP LAYOUT */
+
+
+[data-layout-name$="mls"][data-segment-code="internal-epp-discounted"] .hide-epp {
+    display: none
+}
+
+[data-layout-name$="mls"][data-segment-code="internal-epp-discounted"] .main [data-module-template="heroes"] [data-unit-id="macbook-air-m3"] {
+    display: block;
+}
+
+[data-layout-name$="mls"][data-segment-code="internal-epp-discounted"] .main [data-module-template="promos"] [data-unit-id="homepod-mini"] {
+	display: block;
+}
+
+[data-layout-name$="mls"][data-segment-code="internal-epp-discounted"] .main [data-module-template="heroes"] [data-unit-id="bts-2024"] {
+	display: none;
+}
+
+[data-layout-name$="mls"][data-segment-code="internal-epp-discounted"] .main [data-module-template="promos"] [data-unit-id="macbook-air-m3"] {
+	display: none;
+}
+
+
+/*------------------------------------*\
+  END MLS DEFAULT & EPP LAYOUT CSS
+\*------------------------------------*/
+
+/*------------------------------------*\
+   FOOTNOTE CSS
+\*------------------------------------*/
+
+
+/* LOCAL FIXES */
+
+/* DEFAULT LAYOUT */
+
+
+/*------------------------------------*\
+  END FOOTNOTE CSS
+\*------------------------------------*/
+
+
+/*------------------------------------*\
+   UTILITY CSS
+\*------------------------------------*/
+
+
+/* LOCAL FIXES */
+
+
+br.large {
+  display:block
+}
+
+@media (max-width: 1068px) {
+  br.large {
+      display:none
+  }
+}
+
+@media (max-width: 734px) {
+  br.large {
+      display:none
+  }
+}
+
+br.medium {
+  display:none
+}
+
+@media (max-width: 1068px) {
+  br.medium {
+      display:block
+  }
+}
+
+@media (max-width: 734px) {
+  br.medium {
+      display:none
+  }
+}
+
+br.small {
+  display:none
+}
+
+@media (max-width: 1068px) {
+  br.small {
+      display:none
+  }
+}
+
+@media (max-width: 734px) {
+  br.small {
+      display:block
+  }
+}
+
+
+/*------------------------------------*\
+  END UTILITY CSS
+\*------------------------------------*/

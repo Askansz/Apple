@@ -1,0 +1,61 @@
+/*------------------------------------*\
+		LOCAL SCREENS
+\*------------------------------------*/
+
+
+
+
+
+
+/*------------------------------------*\
+		END LOCAL SCREENS
+\*------------------------------------*/
+
+
+
+
+/*------------------------------------*\
+		LOCAL FIXES
+\*------------------------------------*/
+
+.main [data-module-template="promos"] [data-unit-id="iphone-tradein"] .pricing-container ~ .pricing-fallback {
+	display: none;
+}
+.main [data-module-template="promos"] [data-unit-id="iphone-tradein"] .pricing-container[style*="display: none;"] ~ .pricing-fallback {
+	display: inline;
+}
+
+sup.ase-2023-footnote + sup {
+    display: none;
+}
+
+[data-segment-code] sup.ase-2023-footnote + sup {
+    display: inline-block;
+}
+
+[data-layout-name="ase-2023-holiday-takedown"] sup.ase-2023-footnote {
+	display: none;
+}
+
+[data-layout-name="ase-2023-holiday-takedown"] sup.ase-2023-footnote + sup {
+	display: inline-block;
+}
+
+.main [data-module-template="promos"] [data-unit-id="iphone-tradein"] .promo-legacy-top-copy .unit-image-wrapper {
+	margin-top: 0;
+}
+
+.main [data-module-template="promos"] .unit-image-wrapper .unit-image.unit-image-iphone-tradein-promo-iphone-tradein {
+    top: 10px;
+}
+
+@media only screen and (max-width: 734px) {
+.main [data-module-template="promos"] .unit-image-wrapper .unit-image.unit-image-iphone-tradein-promo-iphone-tradein {
+    top: -10px;
+}
+}
+
+
+/*------------------------------------*\
+		END LOCAL FIXES
+\*------------------------------------*/
