@@ -2,19 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tech-Inspired Site</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech-Inspired Website</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         /* General Styles */
         body {
-            font-family: 'Courier New', Courier, monospace; /* Tech-style font */
             margin: 0;
             padding: 0;
+            font-family: 'Courier New', Courier, monospace; 
             color: #e0e0e0;
-            background-color: #111; /* Dark tech-inspired background */
-            scroll-behavior: smooth;
+            background-color: #111;
             overflow-x: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Background */
+        .background-tech {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -2;
+            background: linear-gradient(135deg, #222 40%, #333 100%);
+        }
+
+        /* Dynamic Tech Grid */
+        .tech-grid {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255, 255, 255, 0.05),
+                rgba(255, 255, 255, 0.05) 1px,
+                transparent 1px,
+                transparent 50px
+            );
+            background-size: 50px 50px;
+            animation: rotateGrid 30s linear infinite;
+        }
+
+        @keyframes rotateGrid {
+            from {
+                transform: rotate(0deg) translateX(-50%);
+            }
+            to {
+                transform: rotate(360deg) translateX(-50%);
+            }
         }
 
         /* Navbar */
@@ -40,7 +82,7 @@
 
         nav .logo {
             font-size: 26px;
-            color: #39ff14; /* Neon green */
+            color: #39ff14;
             text-decoration: none;
             font-weight: bold;
             letter-spacing: 2px;
@@ -83,43 +125,6 @@
             width: 100%;
         }
 
-        /* Background */
-        .background-tech {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, #222 40%, #333 100%);
-        }
-
-        /* Add glowing grid for a technical feel */
-        .tech-grid {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(255, 255, 255, 0.05),
-                rgba(255, 255, 255, 0.05) 1px,
-                transparent 1px,
-                transparent 50px
-            );
-            background-size: 50px 50px;
-            transform: rotate(45deg) translateX(-50%);
-        }
-
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            font-size: 28px;
-            color: #fff;
-            cursor: pointer;
-        }
-
         /* Hero Section */
         .hero {
             display: flex;
@@ -130,6 +135,7 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            animation: fadeIn 2s ease-in-out;
         }
 
         .hero h1 {
@@ -165,7 +171,6 @@
             transform: translateY(-5px);
         }
 
-        /* Keyframes */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -177,7 +182,15 @@
             }
         }
 
-        /* Product Section */
+        /* Side Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Products Section */
         .products {
             padding: 100px 20px;
             background-color: #1a1a1a;
@@ -188,6 +201,7 @@
             font-size: 40px;
             margin-bottom: 50px;
             color: #39ff14;
+            animation: fadeIn 2s ease-in-out;
         }
 
         .product-grid {
@@ -261,6 +275,25 @@
             font-size: 14px;
         }
 
+        /* Side Menu Styles */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            right: 0;
+            background: #000;
+            width: 200px;
+            padding: 20px;
+            z-index: 999;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             nav ul {
@@ -280,22 +313,6 @@
             }
         }
 
-        /* Active Mobile Menu */
-        nav ul.active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 70px;
-            right: 0;
-            background: #000;
-            width: 200px;
-            padding: 20px;
-        }
-
-        nav ul.active li {
-            margin-bottom: 20px;
-        }
-
     </style>
 </head>
 <body>
@@ -308,23 +325,21 @@
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+            <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
         </nav>
     </header>
 
-    <!-- Background -->
-    <div class="background-tech"></div>
-    <div class="tech-grid"></div>
+    <!-- Background Tech Grid -->
+    <div class="background-tech">
+        <div class="tech-grid"></div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1>Future Tech</h1>
-            <p>Innovation that powers the next generation. Stay ahead with our cutting-edge technology.</p>
-            <a href="#products">Discover More</a>
-        </div>
+        <h1>Innovate with Tech</h1>
+        <p>Explore cutting-edge AI and smart home technology that will transform your world.</p>
+        <a href="#products">Explore More</a>
     </section>
 
     <!-- Product Section -->
