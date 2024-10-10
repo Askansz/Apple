@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech-Inspired Website</title>
+    <title>Advanced Tech-Inspired Website</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         /* General Styles */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Courier New', Courier, monospace; 
+            font-family: 'Courier New', Courier, monospace;
             color: #e0e0e0;
             background-color: #111;
             overflow-x: hidden;
@@ -47,7 +47,7 @@
                 transparent 50px
             );
             background-size: 50px 50px;
-            animation: rotateGrid 30s linear infinite;
+            animation: rotateGrid 15s linear infinite;
         }
 
         @keyframes rotateGrid {
@@ -136,6 +136,7 @@
             position: relative;
             z-index: 1;
             animation: fadeIn 2s ease-in-out;
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.05), rgba(0, 255, 0, 0.1));
         }
 
         .hero h1 {
@@ -146,6 +147,16 @@
             background: linear-gradient(to right, #39ff14, #00bfff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: glowingText 3s ease-in-out infinite;
+        }
+
+        @keyframes glowingText {
+            0%, 100% {
+                text-shadow: 0 0 5px #39ff14, 0 0 10px #00bfff, 0 0 15px #00bfff;
+            }
+            50% {
+                text-shadow: 0 0 15px #00bfff, 0 0 25px #39ff14, 0 0 30px #00bfff;
+            }
         }
 
         .hero p {
@@ -153,6 +164,7 @@
             color: #e0e0e0;
             max-width: 600px;
             margin-bottom: 40px;
+            animation: slideIn 2s ease-in-out;
         }
 
         .hero a {
@@ -164,6 +176,7 @@
             text-decoration: none;
             font-size: 18px;
             transition: background 0.3s, transform 0.3s;
+            animation: pulseButton 2s infinite;
         }
 
         .hero a:hover {
@@ -182,28 +195,73 @@
             }
         }
 
-        /* Side Menu */
-        .menu-toggle {
-            display: none;
-            font-size: 28px;
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulseButton {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Parallax Scrolling */
+        .parallax-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: #fff;
-            cursor: pointer;
+            background: rgba(0, 0, 0, 0.7);
+            background-size: cover;
+            background-attachment: fixed;
         }
 
-        /* Products Section */
-        .products {
-            padding: 100px 20px;
-            background-color: #1a1a1a;
+        .parallax-section:nth-of-type(1) {
+            background-image: url('tech-background1.jpg');
         }
 
-        .products h2 {
-            text-align: center;
-            font-size: 40px;
-            margin-bottom: 50px;
-            color: #39ff14;
-            animation: fadeIn 2s ease-in-out;
+        .parallax-section:nth-of-type(2) {
+            background-image: url('tech-background2.jpg');
         }
 
+        .parallax-section h2 {
+            font-size: 50px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button Hover Effects */
+        .hero a:hover {
+            box-shadow: 0 0 15px #39ff14, 0 0 25px #00bfff;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        /* Product Cards 3D Effect */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -215,116 +273,35 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2);
-            transform: scale(1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transform: perspective(1000px) rotateY(0);
+            transition: transform 1s, box-shadow 0.3s;
         }
 
         .product-item:hover {
-            transform: scale(1.05);
+            transform: perspective(1000px) rotateY(180deg);
             box-shadow: 0 8px 18px rgba(0, 255, 0, 0.4);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .product-content {
-            padding: 20px;
-            text-align: center;
-            color: #fff;
-        }
-
-        .product-content h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .product-content p {
-            font-size: 16px;
-            color: #bbb;
-        }
-
-        .product-content a {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #00bfff;
-            color: #fff;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 16px;
-            transition: background 0.3s;
-        }
-
-        .product-content a:hover {
-            background: #39ff14;
         }
 
         /* Footer */
         footer {
             background: #111;
-            color: #bbb;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 14px;
-        }
-
-        /* Side Menu Styles */
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav ul.active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 70px;
-            right: 0;
-            background: #000;
-            width: 200px;
             padding: 20px;
-            z-index: 999;
+            text-align: center;
+            color: #888;
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- Header -->
     <header id="navbar">
         <nav>
             <a href="#" class="logo">TechSite</a>
             <ul>
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#products">Products</a></li>
-                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
         </nav>
@@ -340,6 +317,11 @@
         <h1>Innovate with Tech</h1>
         <p>Explore cutting-edge AI and smart home technology that will transform your world.</p>
         <a href="#products">Explore More</a>
+    </section>
+
+    <!-- Parallax Section -->
+    <section class="parallax-section">
+        <h2>Experience Innovation</h2>
     </section>
 
     <!-- Product Section -->
@@ -363,6 +345,11 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Parallax Section -->
+    <section class="parallax-section">
+        <h2>Explore the Future</h2>
     </section>
 
     <!-- Footer -->
