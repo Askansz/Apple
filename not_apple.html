@@ -2,20 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Enhanced Apple-Inspired Site</title>
+    <title>Tech-Inspired Site</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Include FontAwesome for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         /* General Styles */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Courier New', Courier, monospace; /* Tech-style font */
             margin: 0;
             padding: 0;
-            color: #1d1d1f;
+            color: #e0e0e0;
+            background-color: #111; /* Dark tech-inspired background */
             scroll-behavior: smooth;
             overflow-x: hidden;
-            background-color: #f5f5f7;
         }
 
         /* Navbar */
@@ -23,13 +22,13 @@
             position: fixed;
             width: 100%;
             top: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             z-index: 1000;
-            transition: background 0.3s;
+            transition: background 0.3s ease-in-out;
         }
 
         header.scrolled {
-            background: #000;
+            background: #1a1a1a;
         }
 
         nav {
@@ -40,9 +39,11 @@
         }
 
         nav .logo {
-            font-size: 24px;
-            color: #fff;
+            font-size: 26px;
+            color: #39ff14; /* Neon green */
             text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 2px;
         }
 
         nav ul {
@@ -63,26 +64,55 @@
             transition: color 0.3s;
         }
 
+        nav ul li a:hover {
+            color: #39ff14;
+        }
+
         nav ul li a::after {
             content: '';
             position: absolute;
             width: 0%;
             height: 2px;
-            background: #fff;
+            background: #39ff14;
             bottom: -5px;
             left: 0;
             transition: width 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #aaa;
         }
 
         nav ul li a:hover::after {
             width: 100%;
         }
 
-        /* Mobile Menu Toggle */
+        /* Background */
+        .background-tech {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #222 40%, #333 100%);
+        }
+
+        /* Add glowing grid for a technical feel */
+        .tech-grid {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255, 255, 255, 0.05),
+                rgba(255, 255, 255, 0.05) 1px,
+                transparent 1px,
+                transparent 50px
+            );
+            background-size: 50px 50px;
+            transform: rotate(45deg) translateX(-50%);
+        }
+
+        /* Mobile Menu */
         .menu-toggle {
             display: none;
             font-size: 28px;
@@ -97,46 +127,33 @@
             justify-content: center;
             flex-direction: column;
             height: 100vh;
-            color: #fff;
             text-align: center;
-            background-image: url('https://i.ibb.co/tZZKBp4/converted-3.jpg'); /* Replace with your image */
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-content {
             position: relative;
             z-index: 1;
-            animation: fadeIn 2s ease-in-out;
         }
 
         .hero h1 {
-            font-size: 64px;
-            margin-bottom: 20px;
+            font-size: 60px;
+            color: #fff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #39ff14, #00bfff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 24px;
+            font-size: 20px;
+            color: #e0e0e0;
+            max-width: 600px;
             margin-bottom: 40px;
         }
 
         .hero a {
             display: inline-block;
-            padding: 15px 30px;
-            background: #0071e3;
-            color: #fff;
+            padding: 12px 30px;
+            background: #39ff14;
+            color: #000;
             border-radius: 50px;
             text-decoration: none;
             font-size: 18px;
@@ -144,7 +161,7 @@
         }
 
         .hero a:hover {
-            background: #005bb5;
+            background: #00bfff;
             transform: translateY(-5px);
         }
 
@@ -160,16 +177,17 @@
             }
         }
 
-        /* Products Section */
+        /* Product Section */
         .products {
             padding: 100px 20px;
-            background: #f5f5f7;
+            background-color: #1a1a1a;
         }
 
         .products h2 {
             text-align: center;
             font-size: 40px;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            color: #39ff14;
         }
 
         .product-grid {
@@ -179,17 +197,17 @@
         }
 
         .product-item {
-            background: #fff;
+            background: #292929;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2);
             transform: scale(1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .product-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 18px rgba(0, 255, 0, 0.4);
         }
 
         .product-image {
@@ -202,23 +220,23 @@
         .product-content {
             padding: 20px;
             text-align: center;
+            color: #fff;
         }
 
         .product-content h3 {
-            font-size: 24px;
+            font-size: 22px;
             margin-bottom: 10px;
         }
 
         .product-content p {
             font-size: 16px;
-            color: #6e6e73;
-            margin-bottom: 20px;
+            color: #bbb;
         }
 
         .product-content a {
             display: inline-block;
             padding: 10px 20px;
-            background: #0071e3;
+            background: #00bfff;
             color: #fff;
             border-radius: 50px;
             text-decoration: none;
@@ -227,72 +245,13 @@
         }
 
         .product-content a:hover {
-            background: #005bb5;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 100px 20px;
-        }
-
-        .features h2 {
-            text-align: center;
-            font-size: 40px;
-            margin-bottom: 60px;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #f0f0f0, #fafafa);
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transform: translateY(50px);
-            opacity: 0;
-            animation: slideUp 1s forwards;
-        }
-
-        .feature-item:nth-child(odd) {
-            animation-delay: 0.3s;
-        }
-
-        .feature-item:nth-child(even) {
-            animation-delay: 0.6s;
-        }
-
-        .feature-item i {
-            font-size: 50px;
-            color: #0071e3;
-            margin-bottom: 20px;
-        }
-
-        .feature-item h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .feature-item p {
-            font-size: 16px;
-            color: #6e6e73;
-        }
-
-        @keyframes slideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            background: #39ff14;
         }
 
         /* Footer */
         footer {
-            background: #000;
-            color: #fff;
+            background: #111;
+            color: #bbb;
             padding: 40px 20px;
             text-align: center;
         }
@@ -317,7 +276,7 @@
             }
 
             .hero p {
-                font-size: 20px;
+                font-size: 18px;
             }
         }
 
@@ -344,7 +303,7 @@
     <!-- Navbar -->
     <header id="navbar">
         <nav>
-            <a href="#" class="logo">YourLogo</a>
+            <a href="#" class="logo">TechSite</a>
             <ul>
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#products">Products</a></li>
@@ -355,80 +314,63 @@
         </nav>
     </header>
 
+    <!-- Background -->
+    <div class="background-tech"></div>
+    <div class="tech-grid"></div>
+
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <h1>Experience Innovation</h1>
-            <p>Where technology meets creativity.</p>
-            <a href="#products">Explore Now</a>
+            <h1>Future Tech</h1>
+            <p>Innovation that powers the next generation. Stay ahead with our cutting-edge technology.</p>
+            <a href="#products">Discover More</a>
         </div>
     </section>
 
-    <!-- Products Section -->
+    <!-- Product Section -->
     <section class="products" id="products">
         <h2>Our Products</h2>
         <div class="product-grid">
             <div class="product-item">
-                <div class="product-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                <div class="product-image" style="background-image: url('product1.jpg');"></div>
                 <div class="product-content">
-                    <h3>Product One</h3>
-                    <p>Description of Product One.</p>
+                    <h3>AI Assistant</h3>
+                    <p>The smartest virtual assistant for your personal and business needs.</p>
                     <a href="#">Learn More</a>
                 </div>
             </div>
             <div class="product-item">
-                <div class="product-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                <div class="product-image" style="background-image: url('product2.jpg');"></div>
                 <div class="product-content">
-                    <h3>Product Two</h3>
-                    <p>Description of Product Two.</p>
+                    <h3>Smart Home Hub</h3>
+                    <p>Control your home with the power of AI and smart integration.</p>
                     <a href="#">Learn More</a>
                 </div>
-            </div>
-            <!-- Add more product items as needed -->
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <h2>Why Choose Us</h2>
-        <div class="feature-grid">
-            <div class="feature-item">
-                <i class="fas fa-rocket"></i>
-                <h3>Fast Performance</h3>
-                <p>Experience lightning-fast speeds.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Top Security</h3>
-                <p>Protect your data with our advanced security features.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-sync-alt"></i>
-                <h3>Seamless Integration</h3>
-                <p>All your devices working in perfect harmony.</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Your Company. All rights reserved.</p>
+        <p>&copy; 2024 TechSite. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         // Navbar background change on scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.getElementById('navbar');
-            header.classList.toggle('scrolled', window.scrollY > 50);
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
-        // Mobile menu toggle
+        // Toggle mobile menu
         function toggleMenu() {
-            const nav = document.querySelector('nav ul');
-            nav.classList.toggle('active');
+            const navMenu = document.querySelector('nav ul');
+            navMenu.classList.toggle('active');
         }
     </script>
-
 </body>
 </html>
